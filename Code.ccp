@@ -1,4 +1,4 @@
-#include <DFPlayer_Mini_Mp3.h>
+include <DFRobotDFPlayerMini.h>
 #include <stdlib.h>
 
 // Pin-Definitionen
@@ -18,15 +18,39 @@ bool partyLightActive = false;
 
 bool outputState[] = {false, false, false, false}; // Zustand der Ausgänge
 
-void initializePins() {
+HardwareSerial mySoftwareSerial(1);
+DFRobotDFPlayerMini myDFPlayer;
+
+void printDetail(uint8_t type, int value);
+
+void setup() {
   // Serielle Kommunikation starten und DFPlayer Mini initialisieren
   Serial.begin(9600);
-  if (!mp3.begin(Serial1)) {
-    Serial.println("Fehler beim DFPlayer Mini");
+  mySoftwareSerial.begin(9600, SERIAL_8N1, 18, 19);  // speed, type, RX, TX
+  
+  Serial.println();
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+
+  if (!myDFPlayer.begin(mySoftwareSerial, false)) {  //Use softwareSerial to communicate with mp3.
+
+    Serial.println(myDFPlayer.readType(), HEX);
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
     while (true);
   }
+  Serial.println(F("DFPlayer Mini online."));
 
-  mp3.volume(15); // Lautstärke einstellen
+  myDFPlayer.setTimeOut(500); //Set serial communictaion time out 500ms
+
+  //----Set volume----
+  myDFPlayer.volume(25);  //Set volume value (0~30).
+
+  myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);
+  myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
+  int delayms = 100;
+  myDFPlayer.playFolder(1, 1);
 
   // Pins konfigurieren
   pinMode(startButtonPin, INPUT);
@@ -51,7 +75,7 @@ void attractMode() {
   // Zufällig Track 2 oder Track 3 auswählen
   int attractTrack = random(2, 4); // Zufallszahl zwischen 2 (inklusive) und 4 (exklusive) (Track 2 und Track 3)
 
-  mp3.play(attractTrack); // Zufällig ausgewählten Track abspielen
+  myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
   delay(10000);
   digitalWrite(outputPins[0], LOW);
@@ -60,7 +84,7 @@ void attractMode() {
   partyLightActive = false;
   digitalWrite(partyLightPin, LOW);
   lastStartTime = millis();
-  mp3.stop();
+  myDFPlayer.stop();
   digitalWrite(motorPin, LOW);
   digitalWrite(lightPin, LOW);
 }
@@ -75,7 +99,7 @@ void startGame() {
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
 
-  mp3.play(1); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
+  myDFPlayer.play(1); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
 }
 
 // Funktion, um das Spiel zu beenden
@@ -87,7 +111,7 @@ void endGame() {
   digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
   digitalWrite(lightPin, LOW);
-  mp3.stop();
+  myDFPlayer.stop();
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern

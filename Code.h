@@ -60,7 +60,7 @@ void setup() {
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
   // Pins konfigurieren
-  pinMode(startButtonPin, INPUT);
+  pinMode(startButtonPin, INPUT_PULLUP);
   for (int i = 0; i < 4; ++i) {
     pinMode(buttonPins[i], INPUT);
     pinMode(outputPins[i], OUTPUT);
@@ -70,7 +70,7 @@ void setup() {
 
   lastStartTime = millis(); // Startzeit setzen
 
-  digitalWrite(startButtonPin, LOW);
+  //digitalWrite(startButtonPin, LOW);
 }
 
 // Funktion für den "Attract Mode"
@@ -152,7 +152,7 @@ void loop() {
   }
 
   // Überprüfen, ob das Spiel gestartet werden soll
-  if (digitalRead(startButtonPin) == HIGH && !programRunning) {
+  if (digitalRead(startButtonPin) == LOW && !programRunning) {
     startGame();
   }
 

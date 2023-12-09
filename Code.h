@@ -4,9 +4,9 @@
 
 // Pin-Definitionen
 const int startButtonPin = 22;
-const int buttonPins[] = {24, 4, 5, 6};
-const int outputPins[] = {25, 8, 9, 10};
-const int partyLightPin = 11;
+const int buttonPins[] = {3, 4, 5, 6};
+const int outputPins[] = {7, 8, 9, 10};
+const int partyLightPin = 24;
 const int motorPin = outputPins[0];
 const int lightPin = outputPins[1];
 const int ledPin = 13;
@@ -67,10 +67,10 @@ void setup() {
   }
   pinMode(partyLightPin, OUTPUT);
   pinMode(ledPin, OUTPUT);
-
+  pinMode(motorPin, OUTPUT);
   lastStartTime = millis(); // Startzeit setzen
 
-  //digitalWrite(startButtonPin, LOW);
+  digitalWrite(motorPIN, HIGH);
 }
 
 // Funktion für den "Attract Mode"
@@ -107,7 +107,7 @@ void startGame() {
   attractModeRunning = false;
   partyLightActive = true;
   digitalWrite(partyLightPin, HIGH);
-  digitalWrite(motorPin, HIGH);
+  digitalWrite(motorPin, LOW);
   digitalWrite(lightPin, HIGH);
 
   myDFPlayer.play(1); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)

@@ -6,9 +6,9 @@
 const int startButtonPin = 22;
 const int buttonPins[] = {3, 4, 5, 6};
 const int outputPins[] = {7, 8, 9, 10};
-const int partyLightPin = 24;
-const int motorPin = outputPins[0];
-const int lightPin = outputPins[1];
+const int partyLightPin = 0;
+const int motorPin = 24;
+const int lightPin = 1;
 const int ledPin = 13;
 
 unsigned long startTime = 0;
@@ -70,7 +70,7 @@ void setup() {
   pinMode(motorPin, OUTPUT);
   lastStartTime = millis(); // Startzeit setzen
 
-  digitalWrite(motorPIN, HIGH);
+  digitalWrite(motorPin, HIGH);
 }
 
 // Funktion für den "Attract Mode"

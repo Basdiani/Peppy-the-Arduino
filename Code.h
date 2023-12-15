@@ -102,6 +102,11 @@ void attractMode() {
   digitalWrite(buttonPins[2], random(LOW, HIGH));
   digitalWrite(buttonPins[3], random(LOW, HIGH));
   delay(100)
+  digitalWrite(buttonPins[0], random(LOW, HIGH));
+  digitalWrite(buttonPins[1], random(LOW, HIGH));
+  digitalWrite(buttonPins[2], random(LOW, HIGH));
+  digitalWrite(buttonPins[3], random(LOW, HIGH));
+
   
   
   
@@ -129,6 +134,7 @@ void attractMode() {
 // Funktion, um das Spiel zu starten
 void startGame() {
   programRunning = true;
+  digitalWrite(ledPin, HIGH);
   startTime = millis();
   attractModeRunning = false;
   partyLightActive = true;
@@ -160,7 +166,7 @@ void endGame() {
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
 void controlOutputs() {
   for (int i = 0; i < 4; ++i) {
-    if (digitalRead(buttonPins[i]) == HIGH) {
+    if (digitalRead(buttonPins[i]) == LOW) {
       outputState[i] = true; // Schalter gedrückt, Output aktivieren
     } else {
       outputState[i] = false; // Schalter losgelassen, Output deaktivieren
@@ -184,7 +190,6 @@ void loop() {
 
   // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
   if (programRunning) {
-    digitalWrite(ledPin, HIGH);
     controlOutputs();
 
     // Überprüfen, ob das Spielende erreicht wurde

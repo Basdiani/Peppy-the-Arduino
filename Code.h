@@ -112,7 +112,7 @@ void attractMode() {
   
 
   // Zufällig Track 2 oder Track 3 auswählen
-  int attractTrack = random(3, 5); // Zufallszahl zwischen 2 (inklusive) und 4 (exklusive) (Track 2 und Track 3)
+  int attractTrack = random(3, 5); // Zufallszahl zwischen 3 (inklusive) und 5 (exklusive) (Track 3 und Track 4)
 
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 

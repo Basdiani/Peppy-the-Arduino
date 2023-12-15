@@ -62,15 +62,23 @@ void setup() {
   // Pins konfigurieren
   pinMode(startButtonPin, INPUT_PULLUP);
   for (int i = 0; i < 4; ++i) {
-    pinMode(buttonPins[i], INPUT);
+    pinMode(buttonPins[i], INPUT_PULLUP);
     pinMode(outputPins[i], OUTPUT);
   }
   pinMode(partyLightPin, OUTPUT);
   pinMode(ledPin, OUTPUT);
   pinMode(motorPin, OUTPUT);
+  pinMode(lightPin, OUTPUT);
+
+  
   lastStartTime = millis(); // Startzeit setzen
 
   digitalWrite(motorPin, HIGH);
+  digitalWrite(partyLightPin, HIGH);
+  digitalWrite(ledPin, HIGH);
+  digitalWrite(lightPin, HIGH);
+  
+  
 }
 
 // Funktion für den "Attract Mode"
@@ -78,9 +86,25 @@ void attractMode() {
   attractModeRunning = true;
   Serial.println(F("Attract mode gestartet"));
   partyLightActive = true;
-  digitalWrite(partyLightPin, HIGH);
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(partyLightPin, LOW);
+  digitalWrite(buttonPins[0], random(LOW, HIGH));
+  digitalWrite(buttonPins[1], random(LOW, HIGH));
+  digitalWrite(buttonPins[2], random(LOW, HIGH));
+  digitalWrite(buttonPins[3], random(LOW, HIGH));
+  delay(100)
+  digitalWrite(buttonPins[0], random(LOW, HIGH));
+  digitalWrite(buttonPins[1], random(LOW, HIGH));
+  digitalWrite(buttonPins[2], random(LOW, HIGH));
+  digitalWrite(buttonPins[3], random(LOW, HIGH));
+  delay(100)
+  digitalWrite(buttonPins[0], random(LOW, HIGH));
+  digitalWrite(buttonPins[1], random(LOW, HIGH));
+  digitalWrite(buttonPins[2], random(LOW, HIGH));
+  digitalWrite(buttonPins[3], random(LOW, HIGH));
+  delay(100)
+  
+  
+  
 
   // Zufällig Track 2 oder Track 3 auswählen
   int attractTrack = random(2, 4); // Zufallszahl zwischen 2 (inklusive) und 4 (exklusive) (Track 2 und Track 3)
@@ -88,15 +112,17 @@ void attractMode() {
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
   delay(10000);
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], LOW);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
   attractModeRunning = false;
   partyLightActive = false;
-  digitalWrite(partyLightPin, LOW);
+  digitalWrite(partyLightPin, HIGH);
   lastStartTime = millis();
   myDFPlayer.stop();
-  digitalWrite(motorPin, LOW);
-  digitalWrite(lightPin, LOW);
+  digitalWrite(motorPin, HIGH);
+  digitalWrite(lightPin, HIGH);
   Serial.println(F("Attract mode Beendet"));
 }
 
@@ -106,9 +132,9 @@ void startGame() {
   startTime = millis();
   attractModeRunning = false;
   partyLightActive = true;
-  digitalWrite(partyLightPin, HIGH);
+  digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
-  digitalWrite(lightPin, HIGH);
+  digitalWrite(lightPin, LOW);
 
   myDFPlayer.play(1); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
    Serial.println(F("Game Gestartet"));
@@ -120,13 +146,13 @@ void endGame() {
   digitalWrite(ledPin, LOW);
   lastStartTime = millis();
   partyLightActive = false;
-  digitalWrite(partyLightPin, LOW);
-  digitalWrite(motorPin, LOW);
-  digitalWrite(lightPin, LOW);
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], LOW);
-  digitalWrite(outputPins[2], LOW);
-  digitalWrite(outputPins[3], LOW);
+  digitalWrite(partyLightPin, HIGH);
+  digitalWrite(motorPin, HIGH);
+  digitalWrite(lightPin, HIGH);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
   myDFPlayer.stop();
    Serial.println(F("Game Beendet."));
 }

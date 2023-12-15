@@ -112,7 +112,7 @@ void attractMode() {
   
 
   // Zufällig Track 2 oder Track 3 auswählen
-  int attractTrack = random(2, 4); // Zufallszahl zwischen 2 (inklusive) und 4 (exklusive) (Track 2 und Track 3)
+  int attractTrack = random(3, 5); // Zufallszahl zwischen 2 (inklusive) und 4 (exklusive) (Track 2 und Track 3)
 
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
@@ -142,7 +142,7 @@ void startGame() {
   digitalWrite(motorPin, LOW);
   digitalWrite(lightPin, LOW);
 
-  myDFPlayer.play(1); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
+  myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
    Serial.println(F("Game Gestartet"));
 }
 

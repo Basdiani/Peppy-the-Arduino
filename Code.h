@@ -4,8 +4,8 @@
 
 // Pin-Definitionen
 const int startButtonPin = 22;
-const int buttonPins[] = {3, 4, 5, 6};
-const int outputPins[] = {7, 8, 9, 10};
+const int buttonPins[] = {37, 39, 41, 43};
+const int outputPins[] = {25, 27, 29, 31};
 const int partyLightPin = 0;
 const int motorPin = 24;
 const int lightPin = 1;
@@ -48,14 +48,13 @@ void setup() {
     Serial.println(F("1.Please recheck the connection!"));
     Serial.println(F("2.Please insert the SD card!"));
     while(true){
-      delay(0); // Code to compatible with ESP8266 watch dog.
+      delay(500); // Code to compatible with ESP8266 watch dog.
     }
   }
   Serial.println(F("DFPlayer Mini online."));
 
-  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
-  myDFPlayer.play(1);  //Play the first mp3
-
+  myDFPlayer.volume(30);  //Set volume value. From 0 to 30
+  
   if (myDFPlayer.available()) {
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
@@ -75,10 +74,12 @@ void setup() {
 
   digitalWrite(motorPin, HIGH);
   digitalWrite(partyLightPin, HIGH);
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(ledPin, LOW);
   digitalWrite(lightPin, HIGH);
-  
-  
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
 }
 
 // Funktion für den "Attract Mode"
@@ -87,26 +88,27 @@ void attractMode() {
   Serial.println(F("Attract mode gestartet"));
   partyLightActive = true;
   digitalWrite(partyLightPin, LOW);
-  digitalWrite(buttonPins[0], random(LOW, HIGH));
-  digitalWrite(buttonPins[1], random(LOW, HIGH));
-  digitalWrite(buttonPins[2], random(LOW, HIGH));
-  digitalWrite(buttonPins[3], random(LOW, HIGH));
-  delay(100)
-  digitalWrite(buttonPins[0], random(LOW, HIGH));
-  digitalWrite(buttonPins[1], random(LOW, HIGH));
-  digitalWrite(buttonPins[2], random(LOW, HIGH));
-  digitalWrite(buttonPins[3], random(LOW, HIGH));
-  delay(100)
-  digitalWrite(buttonPins[0], random(LOW, HIGH));
-  digitalWrite(buttonPins[1], random(LOW, HIGH));
-  digitalWrite(buttonPins[2], random(LOW, HIGH));
-  digitalWrite(buttonPins[3], random(LOW, HIGH));
-  delay(100)
-  digitalWrite(buttonPins[0], random(LOW, HIGH));
-  digitalWrite(buttonPins[1], random(LOW, HIGH));
-  digitalWrite(buttonPins[2], random(LOW, HIGH));
-  digitalWrite(buttonPins[3], random(LOW, HIGH));
-
+  digitalWrite(motorPin, LOW);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], LOW);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+  delay(2500);
+  digitalWrite(outputPins[0], LOW);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+  delay(2500);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], LOW);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+  delay(2500);
+  digitalWrite(outputPins[0], LOW);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+  delay(2500);
   
   
   
@@ -116,7 +118,6 @@ void attractMode() {
 
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
-  delay(10000);
   digitalWrite(outputPins[0], HIGH);
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
@@ -129,6 +130,7 @@ void attractMode() {
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
   Serial.println(F("Attract mode Beendet"));
+  loop();
 }
 
 // Funktion, um das Spiel zu starten
@@ -166,7 +168,7 @@ void endGame() {
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
 void controlOutputs() {
   for (int i = 0; i < 4; ++i) {
-    if (digitalRead(buttonPins[i]) == LOW) {
+    if (digitalRead(buttonPins[i]) == HIGH) {
       outputState[i] = true; // Schalter gedrückt, Output aktivieren
     } else {
       outputState[i] = false; // Schalter losgelassen, Output deaktivieren

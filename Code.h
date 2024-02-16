@@ -326,7 +326,7 @@ void startbutton(){
   if (!programRunning) {
         // Interrupt deaktivieren
     detachInterrupt(digitalPinToInterrupt(startButtonPin));
-    Serial.println(F("Imterrupt für Gameplay deaktiviert."));
+    Serial.println(F("Interrupt für Gameplay deaktiviert."));
     
     wdt_reset();  /* Reset the watchdog */
     

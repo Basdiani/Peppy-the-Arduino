@@ -4,7 +4,7 @@
 #include <avr/wdt.h> /* Header for watchdog timers in AVR */
 
 // Pin-Definitionen
-const int startButtonPin = 21; // PIN 21 für Interrupt bei Mega2560
+const int startButtonPin = 2; // PIN 21 für Interrupt bei Mega2560
 const int buttonPins[] = {37, 39, 41, 43};
 const int outputPins[] = {25, 27, 29, 31};
 const int partyLightPin = 0;
@@ -133,14 +133,19 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   digitalWrite(partyLightPin, HIGH);
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
-  delay(200);
+  delay(50);
   lastStartTime = millis();
   Serial.println(F("Attract Mode Beendet"));
 }
 
 // Funktion, um das Spiel zu starten
 void startGame() {
-    
+
+        // Interrupt deaktivieren
+    detachInterrupt(digitalPinToInterrupt(startButtonPin));
+    Serial.println(F("Interrupt für Gameplay deaktiviert."));
+
+
     wdt_reset();  /* Reset the watchdog */
     Serial.println(F("Watchdog reset."));
   
@@ -165,7 +170,10 @@ void endGame() {
   
 //Pinoutputs auf standard
   pinreset();
-  myDFPlayer.stop();
+
+   myDFPlayer.stop();
+
+  
   partyLightActive = false;
   programRunning = false;
   Serial.println(F("Game Beendet."));
@@ -321,9 +329,16 @@ void pinreset() {
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+
+  wdt_reset();  /* Reset the watchdog */
+  Serial.println(F("Watchdog reset."));
+  //myDFPlayer.stop();
   
+  wdt_reset();  /* Reset the watchdog */
+  Serial.println(F("Watchdog reset."));
+
   Serial.println(F("OutputPins auf Standard setzen."));
-    delay(200);
+  delay(200);
 }
 
 void pinset(int pina,int pinb,int pinc,int pind) {
@@ -339,18 +354,10 @@ void pinset(int pina,int pinb,int pinc,int pind) {
 void startbutton(){
     // Überprüfen, ob das Spiel gestartet werden soll
   if (!programRunning) {
-
-        // Interrupt deaktivieren
-    detachInterrupt(digitalPinToInterrupt(startButtonPin));
-    Serial.println(F("Interrupt für Gameplay deaktiviert."));
-
-        // Interrupt deaktivieren
-    detachInterrupt(digitalPinToInterrupt(startButtonPin));
-    Serial.println(F("Interrupt für Gameplay deaktiviert."));
-    
-    //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
+   
+           //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
      pinreset();
-  
+
     startGame();
   }
   }

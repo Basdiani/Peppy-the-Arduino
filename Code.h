@@ -76,15 +76,8 @@ void setup() {
   
   lastStartTime = millis(); // Startzeit setzen
 
-  digitalWrite(motorPin, HIGH);
-  digitalWrite(partyLightPin, HIGH);
   digitalWrite(ledPin, LOW);
-  digitalWrite(lightPin, HIGH);
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-
+  pinreset();
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 

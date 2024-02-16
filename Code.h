@@ -241,6 +241,7 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
   }
 wdt_reset();  /* Reset the watchdog */
 }
+
 void printDetail(uint8_t type, int value){
   switch (type) {
     case TimeOut:

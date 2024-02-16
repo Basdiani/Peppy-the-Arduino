@@ -325,6 +325,15 @@ void pinreset() {
     delay(200);
 }
 
+void pinset(pina,pinb,pinc,pind) {
+
+ bdigitalWrite(outputPins[0], pina);
+  digitalWrite(outputPins[1], pinb);
+  digitalWrite(outputPins[2], pinc);
+  digitalWrite(outputPins[3], pind);
+  
+}
+
 void startbutton(){
     // Überprüfen, ob das Spiel gestartet werden soll
   if (!programRunning) {

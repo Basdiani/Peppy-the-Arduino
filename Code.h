@@ -319,6 +319,15 @@ void printDetail(uint8_t type, int value){
 void startbutton(){
     // Überprüfen, ob das Spiel gestartet werden soll
   if (!programRunning) {
+
+    //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
+  digitalWrite(partyLightPin, HIGH);
+  digitalWrite(motorPin, HIGH);
+  digitalWrite(lightPin, HIGH);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
     // Interrupt deaktivieren
     detachInterrupt(digitalPinToInterrupt(startButtonPin));
     startGame();

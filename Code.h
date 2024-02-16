@@ -307,7 +307,6 @@ void pinreset() {
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
     delay(200);
-  wdt_reset();  /* Reset the watchdog */
 }
 
 void pinset(int pina,int pinb,int pinc,int pind) {

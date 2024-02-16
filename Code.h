@@ -188,7 +188,7 @@ void loop() {
   if (programRunning) { 
 
     //  Controlls aufrufen und Überprüfen, ob das Spielende erreicht wurde
-    if controlOutputs() && (currentTime - startTime >= 60000) {
+    if (controlOutputs() && (currentTime - startTime >= 60000) {
       endGame();
     }
   }

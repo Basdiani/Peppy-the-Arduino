@@ -310,7 +310,7 @@ void pinreset() {
     delay(200);
 }
 
-void pinset(pina,pinb,pinc,pind) {
+void pinset(int pina,int pinb,int pinc,int pind) {
 
  bdigitalWrite(outputPins[0], pina);
   digitalWrite(outputPins[1], pinb);

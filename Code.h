@@ -91,6 +91,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
   
   // Startbutton als Interrupt definieren
   Serial.println(F("Interrupt für Gameplay aktiviert."));
+  delay(200);
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 }
 

@@ -109,39 +109,24 @@ MyAttractModeTimer=30000;
   digitalWrite(motorPin, LOW);
 
 while(millis()-MyTimer<MyAttractModeTimer) {
+
+  pinset(HIGH,LOW,HIGH,HIGH);
   
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], LOW);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
+  delay(750);
+ 
+  pinset(LOW,HIGH,HIGH,HIGH);
 
   delay(750);
 
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-
+  pinset(HIGH,LOW,LOW,HIGH);
+  
   delay(750);
 
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], LOW);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-
-  delay(750);
-
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
+  pinset(LOW,HIGH,HIGH,LOW);
 
   delay(750);  
 
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
+  pinset(HIGH,HIGH,HIGH,HIGH);
 
   delay(750);
   }

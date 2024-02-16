@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Pin-Definitionen
-const int startButtonPin = 22;
+const int startButtonPin = 21; // PIN 21 für Interrupt bei Mega2560
 const int buttonPins[] = {37, 39, 41, 43};
 const int outputPins[] = {25, 27, 29, 31};
 const int partyLightPin = 0;
@@ -13,6 +13,9 @@ const int ledPin = 13;
 
 unsigned long startTime = 0;
 unsigned long lastStartTime = 0;
+unsigned long MyTimer=0;
+unsigned long MyAttractModeTimer=0;
+
 bool programRunning = false;
 bool attractModeRunning = false;
 bool partyLightActive = false;
@@ -80,48 +83,68 @@ void setup() {
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+
+  // Startbutton als Interrupt definieren
+  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
+
 }
 
 // Funktion für den "Attract Mode"
 void attractMode() {
+
+MyTimer=millis();
+MyAttractModeTimer=30000;
+
+
   attractModeRunning = true;
   Serial.println(F("Attract mode gestartet"));
   partyLightActive = true;
-  digitalWrite(partyLightPin, LOW);
-  digitalWrite(motorPin, LOW);
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], LOW);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-  delay(2500);
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-  delay(2500);
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], LOW);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-  delay(2500);
-  digitalWrite(outputPins[0], LOW);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-  delay(2500);
-  
-  
-  
 
   // Zufällig Track 2 oder Track 3 auswählen
   int attractTrack = random(3, 5); // Zufallszahl zwischen 3 (inklusive) und 5 (exklusive) (Track 3 und Track 4)
 
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
+while(millis()-MyTimer<MyAttractModeTimer) {
+
+
+  digitalWrite(partyLightPin, LOW);
+  digitalWrite(motorPin, LOW);
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], LOW);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+
+  delay(2500);
+
+  digitalWrite(outputPins[0], LOW);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+
+  delay(2500);
+
+  digitalWrite(outputPins[0], HIGH);
+  digitalWrite(outputPins[1], LOW);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+
+  delay(2500);
+
+  digitalWrite(outputPins[0], LOW);
+  digitalWrite(outputPins[1], HIGH);
+  digitalWrite(outputPins[2], HIGH);
+  digitalWrite(outputPins[3], HIGH);
+
+  delay(2500);  
+
+
   digitalWrite(outputPins[0], HIGH);
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+  }
+
   attractModeRunning = false;
   partyLightActive = false;
   digitalWrite(partyLightPin, HIGH);
@@ -130,7 +153,6 @@ void attractMode() {
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
   Serial.println(F("Attract mode Beendet"));
-  loop();
 }
 
 // Funktion, um das Spiel zu starten
@@ -163,6 +185,9 @@ void endGame() {
   digitalWrite(outputPins[3], HIGH);
   myDFPlayer.stop();
    Serial.println(F("Game Beendet."));
+
+    // Startbutton als Interrupt wieder aktivieren
+  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
@@ -179,16 +204,6 @@ void controlOutputs() {
 
 void loop() {
   unsigned long currentTime = millis();
-
-  // Überprüfen, ob der "Attract Mode" gestartet werden soll
-  if ((currentTime - lastStartTime) > 600000 && !attractModeRunning) {
-    attractMode();
-  }
-
-  // Überprüfen, ob das Spiel gestartet werden soll
-  if (digitalRead(startButtonPin) == LOW && !programRunning) {
-    startGame();
-  }
 
   // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
   if (programRunning) {
@@ -232,6 +247,12 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
         break;
     }
 }
+
+// Überprüfen, ob der "Attract Mode" gestartet werden soll
+  if ((currentTime - lastStartTime) > 600000 && !attractModeRunning) {
+    attractMode();
+  }
+
 }
 void printDetail(uint8_t type, int value){
   switch (type) {
@@ -293,3 +314,12 @@ void printDetail(uint8_t type, int value){
       break;
   }
 }
+
+void startbutton(){
+    // Überprüfen, ob das Spiel gestartet werden soll
+  if (!programRunning) {
+    // Interrupt deaktivieren
+    detachInterrupt(digitalPinToInterrupt(startButtonPin));
+    startGame();
+  }
+  }

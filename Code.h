@@ -189,9 +189,9 @@ void endGame() {
 void controlOutputs() {
   for (int i = 0; i < 4; ++i) {
     if (digitalRead(buttonPins[i]) == LOW) {
-      outputState[i] = true; // Schalter gedrückt, Output aktivieren
+      outputState[i] = false; // Schalter gedrückt, Output aktivieren
     } else {
-      outputState[i] = false; // Schalter losgelassen, Output deaktivieren
+      outputState[i] = true; // Schalter losgelassen, Output deaktivieren
     }
     digitalWrite(outputPins[i], outputState[i]);
   }

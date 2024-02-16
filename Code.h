@@ -87,6 +87,7 @@ void setup() {
   
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
+  Serial.println(F("Interrupt aktiv."));
 }
 
 // Funktion für den "Attract Mode"
@@ -166,6 +167,7 @@ void endGame() {
 
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
+  Serial.println(F("Imterrupt nach Gameende reaktiviert."));
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
@@ -322,6 +324,7 @@ void startbutton(){
   if (!programRunning) {
         // Interrupt deaktivieren
     detachInterrupt(digitalPinToInterrupt(startButtonPin));
+    Serial.println(F("Imterrupt für Gameplay deaktiviert."));
     
     wdt_reset();  /* Reset the watchdog */
     

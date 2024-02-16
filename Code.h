@@ -179,18 +179,17 @@ void controlOutputs() {
     delay(200);
   }
   wdt_reset();  /* Reset the watchdog */
-  return;
+  return true;
 }
 
 void loop() {
   unsigned long currentTime = millis();
   
   // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
-  if (programRunning) {
-    controlOutputs();
+  if (programRunning) { 
 
-    // Überprüfen, ob das Spielende erreicht wurde
-    if (currentTime - startTime >= 60000) {
+    //  Controlls aufrufen und Überprüfen, ob das Spielende erreicht wurde
+    if controlOutputs() && (currentTime - startTime >= 60000) {
       endGame();
     }
   }

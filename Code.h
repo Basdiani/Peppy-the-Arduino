@@ -314,6 +314,7 @@ void pinreset() {
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
+  Serial.println(F("OutputPins auf Standard setzen."));
     delay(200);
 }
 

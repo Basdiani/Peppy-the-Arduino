@@ -176,7 +176,7 @@ void endGame() {
   digitalWrite(ledPin, LOW);
   lastStartTime = millis();
   partyLightActive = false;
-//Putoutpins auf standard
+//Pinoutputs auf standard
   pinreset();
   
    Serial.println(F("Game Beendet."));

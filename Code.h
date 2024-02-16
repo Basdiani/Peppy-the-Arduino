@@ -149,7 +149,7 @@ void startGame() {
   myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
   startTime = millis();
   Serial.println(F("Game Gestartet"));
-  loop();
+  loop(); // kein Return zum Case wenn per Command gestartet
 }
 
 // Funktion, um das Spiel zu beenden
@@ -170,6 +170,7 @@ void endGame() {
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
   Serial.println(F("Imterrupt nach Gameende reaktiviert."));
+  loop(); // kein Return zum Case wenn per Command gestartet
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern

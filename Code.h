@@ -312,7 +312,7 @@ void pinreset() {
 
 void pinset(int pina,int pinb,int pinc,int pind) {
 
- bdigitalWrite(outputPins[0], pina);
+  digitalWrite(outputPins[0], pina);
   digitalWrite(outputPins[1], pinb);
   digitalWrite(outputPins[2], pinc);
   digitalWrite(outputPins[3], pind);

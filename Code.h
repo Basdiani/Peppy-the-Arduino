@@ -176,14 +176,9 @@ void endGame() {
   digitalWrite(ledPin, LOW);
   lastStartTime = millis();
   partyLightActive = false;
-  digitalWrite(partyLightPin, HIGH);
-  digitalWrite(motorPin, HIGH);
-  digitalWrite(lightPin, HIGH);
-  digitalWrite(outputPins[0], HIGH);
-  digitalWrite(outputPins[1], HIGH);
-  digitalWrite(outputPins[2], HIGH);
-  digitalWrite(outputPins[3], HIGH);
-  myDFPlayer.stop();
+//Putputpins auf standard
+  pinreset();
+  
    Serial.println(F("Game Beendet."));
 
     // Startbutton als Interrupt wieder aktivieren
@@ -316,11 +311,7 @@ void printDetail(uint8_t type, int value){
   return;
 }
 
-void startbutton(){
-    // Überprüfen, ob das Spiel gestartet werden soll
-  if (!programRunning) {
-
-    //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
+void pinreset() {
   digitalWrite(partyLightPin, HIGH);
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
@@ -330,6 +321,14 @@ void startbutton(){
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
     delay(200);
+}
+
+void startbutton(){
+    // Überprüfen, ob das Spiel gestartet werden soll
+  if (!programRunning) {
+
+    //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
+  pinreset();
     
     // Interrupt deaktivieren
     detachInterrupt(digitalPinToInterrupt(startButtonPin));

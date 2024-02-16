@@ -110,25 +110,10 @@ MyAttractModeTimer=30000;
 
 while(millis()-MyTimer<MyAttractModeTimer) {
 
-  pinset(HIGH,LOW,HIGH,HIGH);
-  
-  delay(750);
- 
-  pinset(LOW,HIGH,HIGH,HIGH);
-
-  delay(750);
-
-  pinset(HIGH,LOW,LOW,HIGH);
-  
-  delay(750);
-
-  pinset(LOW,HIGH,HIGH,LOW);
-
-  delay(750);  
-
-  pinset(HIGH,HIGH,HIGH,HIGH);
-
-  delay(750);
+  for (int i = 0; i < 5; ++i) {
+    pinset(setattractpins[i][0],setattractpins[i][1],setattractpins[i][2],setattractpins[i][3]);
+    delay(750);
+  }
   
   wdt_reset();  /* Reset the watchdog */
   }

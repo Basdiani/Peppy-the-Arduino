@@ -213,7 +213,7 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
         break;
        case 'C':
         // Führe Aktion für Befehl 'B' aus
-        Serial.println("Befehl B erkannt!");
+        Serial.println("Befehl C erkannt!");
         // Hier kannst du den Code einfügen, der für Befehl 'B' ausgeführt werden soll
         startGame();
          // Weitere Cases für weitere Befehle hinzufügen falls benötigt

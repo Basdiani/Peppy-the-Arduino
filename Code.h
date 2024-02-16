@@ -81,11 +81,11 @@ void setup() {
   delay(200);
   
   pinreset(); // Standardwerte der Outputs setzen, player stoppen
+
+  wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-
-  wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
 }
 
 // Funktion für den "Attract Mode"

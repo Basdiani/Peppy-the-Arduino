@@ -162,16 +162,17 @@ void startGame() {
 void endGame() {
   programRunning = false;
   digitalWrite(ledPin, LOW);
-  lastStartTime = millis();
-  partyLightActive = false;
+  delay(200);
+  
 //Pinoutputs auf standard
   pinreset();
   
-   Serial.println(F("Game Beendet."));
-
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-
+  
+  lastStartTime = millis();
+  partyLightActive = false;
+  Serial.println(F("Game Beendet."));
   wdt_reset();  /* Reset the watchdog */
 }
 

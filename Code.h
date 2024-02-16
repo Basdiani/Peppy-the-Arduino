@@ -143,6 +143,8 @@ while(millis()-MyTimer<MyAttractModeTimer) {
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+
+  delay(750);
   }
 
   attractModeRunning = false;

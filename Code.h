@@ -88,8 +88,8 @@ Serial.println(F("Mit MP3 Player verbinden."));
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   
   // Startbutton als Interrupt definieren
-  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
   Serial.println(F("Interrupt für Gameplay aktiviert."));
+  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 }
 
 // Funktion für den "Attract Mode"

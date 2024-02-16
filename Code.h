@@ -92,10 +92,11 @@ void setup() {
 // Funktion für den "Attract Mode"
 void attractMode() {
 
+
+  // setze Dauer des Attract Mode
 MyTimer=millis();
 MyAttractModeTimer=30000;
-
-
+  
   attractModeRunning = true;
   Serial.println(F("Attract mode gestartet"));
   partyLightActive = true;

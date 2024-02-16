@@ -328,6 +328,7 @@ void startbutton(){
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+    myDFPlayer.stop();
     delay(200);
     
     // Interrupt deaktivieren

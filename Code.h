@@ -293,7 +293,6 @@ void printDetail(uint8_t type, int value){
     default:
       break;
   }
-  return;
 }
 
 void pinreset() {
@@ -306,7 +305,6 @@ void pinreset() {
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
     delay(200);
-  return;
 }
 
 void pinset(int pina,int pinb,int pinc,int pind) {
@@ -315,7 +313,6 @@ void pinset(int pina,int pinb,int pinc,int pind) {
   digitalWrite(outputPins[1], pinb);
   digitalWrite(outputPins[2], pinc);
   digitalWrite(outputPins[3], pind);
-  return;
   
 }
 

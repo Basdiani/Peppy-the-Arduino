@@ -139,6 +139,7 @@ while(millis()-MyTimer<MyAttractModeTimer) {
   myDFPlayer.stop();
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
+  delay(200);
   Serial.println(F("Attract mode Beendet"));
 }
 

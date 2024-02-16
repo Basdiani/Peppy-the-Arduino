@@ -160,7 +160,7 @@ void startGame() {
 
 // Funktion, um das Spiel zu beenden
 void endGame() {
-  programRunning = false;
+  
   digitalWrite(ledPin, LOW);
   delay(200);
   
@@ -171,6 +171,7 @@ void endGame() {
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
   
   partyLightActive = false;
+  programRunning = false;
   lastStartTime = millis();
   Serial.println(F("Game Beendet."));
   wdt_reset();  /* Reset the watchdog */

@@ -144,7 +144,7 @@ void startGame() {
   myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
   startTime = millis();
   Serial.println(F("Game Gestartet"));
-  return;
+  loop();
 }
 
 // Funktion, um das Spiel zu beenden

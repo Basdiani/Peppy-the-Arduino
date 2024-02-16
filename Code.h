@@ -193,6 +193,7 @@ void loop() {
 
     //  Controlls aufrufen und Überprüfen, ob das Spielende erreicht wurde
     if (controlOutputs() && (millis() - startTime >= 60000)) {
+      Serial.println(F("Spielende erreicht..."));
       endGame();
     }
   }

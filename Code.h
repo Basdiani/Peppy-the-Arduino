@@ -67,6 +67,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
   }
   // Pins konfigurieren
   pinMode(startButtonPin, INPUT_PULLUP);
+  
   for (int i = 0; i < 4; ++i) {
     pinMode(buttonPins[i], INPUT_PULLUP);
     pinMode(outputPins[i], OUTPUT);

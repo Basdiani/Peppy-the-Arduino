@@ -144,6 +144,7 @@ void startGame() {
   myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
   startTime = millis();
   Serial.println(F("Game Gestartet"));
+  return;
 }
 
 // Funktion, um das Spiel zu beenden
@@ -178,7 +179,7 @@ void controlOutputs() {
     delay(200);
   }
   wdt_reset();  /* Reset the watchdog */
-  retrun;
+  return;
 }
 
 void loop() {
@@ -306,6 +307,7 @@ void pinreset() {
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
     delay(200);
+  return;
 }
 
 void pinset(int pina,int pinb,int pinc,int pind) {
@@ -314,6 +316,7 @@ void pinset(int pina,int pinb,int pinc,int pind) {
   digitalWrite(outputPins[1], pinb);
   digitalWrite(outputPins[2], pinc);
   digitalWrite(outputPins[3], pind);
+  return;
   
 }
 

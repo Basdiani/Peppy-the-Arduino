@@ -99,7 +99,7 @@ void attractMode() {
 MyAttractModeTimer=30000;
   
   attractModeRunning = true;
-  Serial.println(F("Attract mode gestartet"));
+  Serial.println(F("Attract Mode gestartet"));
   partyLightActive = true;
 
   // Zufällig Track 2 oder Track 3 auswählen

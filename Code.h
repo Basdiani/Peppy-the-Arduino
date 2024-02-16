@@ -313,6 +313,7 @@ void printDetail(uint8_t type, int value){
     default:
       break;
   }
+}
 
 void startbutton(){
     // Überprüfen, ob das Spiel gestartet werden soll

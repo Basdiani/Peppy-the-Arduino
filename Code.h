@@ -21,7 +21,7 @@ bool programRunning = false;
 bool attractModeRunning = false;
 bool partyLightActive = false;
 
-bool outputState[] = {false, false, false, false}; // Zustand der Ausgänge
+bool outputState[] = {true, true, true, true}; // Zustand der Ausgänge, true = high - relais low active
 #if (defined(ARDUINO_AVR_UNO) || defined(ESP8266))   // Using a soft serial port
 #include <SoftwareSerial.h>
 SoftwareSerial softSerial(/*rx =*/19, /*tx =*/18);

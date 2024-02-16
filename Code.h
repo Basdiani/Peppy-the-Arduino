@@ -163,7 +163,7 @@ void endGame() {
 
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-  
+  return;
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
@@ -178,6 +178,7 @@ void controlOutputs() {
     delay(200);
   }
   wdt_reset();  /* Reset the watchdog */
+  retrun;
 }
 
 void loop() {

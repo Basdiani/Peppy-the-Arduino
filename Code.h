@@ -109,8 +109,6 @@ MyAttractModeTimer=30000;
   digitalWrite(motorPin, LOW);
 
 while(millis()-MyTimer<MyAttractModeTimer) {
-
-
   
   digitalWrite(outputPins[0], HIGH);
   digitalWrite(outputPins[1], LOW);

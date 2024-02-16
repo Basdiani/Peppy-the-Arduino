@@ -80,10 +80,11 @@ Serial.println(F("Mit MP3 Player verbinden."));
   
   lastStartTime = millis(); // Startzeit setzen
 
+  pinreset(); // Standardwerte der Outputs setzen, player stoppen
+
   digitalWrite(ledPin, LOW);
   delay(200);
   
-  pinreset(); // Standardwerte der Outputs setzen, player stoppen
 
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   Serial.println(F("Watchdog aktiv bei 8 Sekunden gesetzt."));

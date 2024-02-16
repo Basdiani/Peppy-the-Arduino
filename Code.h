@@ -133,6 +133,7 @@ while(millis()-MyTimer<MyAttractModeTimer) {
   delay(200);
   lastStartTime = millis();
   Serial.println(F("Attract mode Beendet"));
+  loop(); // kein Return zum Case wenn per Command gestartet
 }
 
 // Funktion, um das Spiel zu starten

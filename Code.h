@@ -113,7 +113,6 @@ MyAttractModeTimer=30000;
   
 MyTimer=millis();
 while(millis()-MyTimer<=MyAttractModeTimer) {
-
   
 // Peppy zappeln lassen
   for (int i = 0; i < 5; ++i) {

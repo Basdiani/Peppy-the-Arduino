@@ -166,7 +166,7 @@ void endGame() {
 
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-  Serial.println(F("Imterrupt nach Gameende reaktiviert."));
+  Serial.println(F("Interrupt nach Gameende reaktiviert."));
   lastStartTime = millis();
 }
 

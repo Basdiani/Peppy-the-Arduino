@@ -205,55 +205,6 @@ void controlOutputs() {
 void loop() {
   unsigned long currentTime = millis();
 
-  // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
-  if (programRunning) {
-    controlOutputs();
-
-    // Überprüfen, ob das Spielende erreicht wurde
-    if (currentTime - startTime >= 60000) {
-      endGame();
-    }
-  }
-  if (myDFPlayer.available()) {
-    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-  }
-if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verfügbar sind
-    char command = Serial.read(); // Einlesen des ersten Zeichens
-
-    // Überprüfen, welcher Befehl eingegeben wurde und entsprechende Aktion ausführen
-    switch (command) {
-      case 'A':
-        // Führe Aktion für Befehl 'A' aus
-        Serial.println("Befehl A erkannt!");
-        // Hier kannst du den Code einfügen, der für Befehl 'A' ausgeführt werden soll
-        attractMode();
-        break;
-      case 'B':
-        // Führe Aktion für Befehl 'B' aus
-        Serial.println("Befehl B erkannt!");
-        // Hier kannst du den Code einfügen, der für Befehl 'B' ausgeführt werden soll
-        endGame();
-        break;
-       case 'C':
-        // Führe Aktion für Befehl 'B' aus
-        Serial.println("Befehl B erkannt!");
-        // Hier kannst du den Code einfügen, der für Befehl 'B' ausgeführt werden soll
-        startGame();
-         // Weitere Cases für weitere Befehle hinzufügen falls benötigt
-
-      default:
-        // Führe diese Aktion aus, wenn ein unbekannter Befehl eingegeben wurde
-        Serial.println("Unbekannter Befehl!");
-        break;
-    }
-}
-
-// Überprüfen, ob der "Attract Mode" gestartet werden soll
-  if ((currentTime - lastStartTime) > 600000 && !attractModeRunning) {
-    attractMode();
-  }
-
-}
 void printDetail(uint8_t type, int value){
   switch (type) {
     case TimeOut:
@@ -313,6 +264,58 @@ void printDetail(uint8_t type, int value){
     default:
       break;
   }
+
+  
+  // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
+  if (programRunning) {
+    controlOutputs();
+
+    // Überprüfen, ob das Spielende erreicht wurde
+    if (currentTime - startTime >= 60000) {
+      endGame();
+    }
+  }
+  if (myDFPlayer.available()) {
+    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
+  }
+if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verfügbar sind
+    char command = Serial.read(); // Einlesen des ersten Zeichens
+
+    // Überprüfen, welcher Befehl eingegeben wurde und entsprechende Aktion ausführen
+    switch (command) {
+      case 'A':
+        // Führe Aktion für Befehl 'A' aus
+        Serial.println("Befehl A erkannt!");
+        // Hier kannst du den Code einfügen, der für Befehl 'A' ausgeführt werden soll
+        attractMode();
+        break;
+      case 'B':
+        // Führe Aktion für Befehl 'B' aus
+        Serial.println("Befehl B erkannt!");
+        // Hier kannst du den Code einfügen, der für Befehl 'B' ausgeführt werden soll
+        endGame();
+        break;
+       case 'C':
+        // Führe Aktion für Befehl 'B' aus
+        Serial.println("Befehl B erkannt!");
+        // Hier kannst du den Code einfügen, der für Befehl 'B' ausgeführt werden soll
+        startGame();
+         // Weitere Cases für weitere Befehle hinzufügen falls benötigt
+
+      default:
+        // Führe diese Aktion aus, wenn ein unbekannter Befehl eingegeben wurde
+        Serial.println("Unbekannter Befehl!");
+        break;
+    }
+}
+
+// Überprüfen, ob der "Attract Mode" gestartet werden soll
+  if ((currentTime - lastStartTime) > 600000 && !attractModeRunning) {
+    attractMode();
+  }
+
+}
+
 }
 
 void startbutton(){

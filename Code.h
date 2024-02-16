@@ -164,8 +164,10 @@ void endGame() {
   partyLightActive = false;
   programRunning = false;
   Serial.println(F("Game Beendet."));
+  
   wdt_reset();  /* Reset the watchdog */
-
+  Serial.println(F("Watchdog reset."));
+  
   lastStartTime = millis();
   Serial.println(F("Interrupt nach Gameende reaktiviert."));
     // Startbutton als Interrupt wieder aktivieren

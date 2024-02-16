@@ -131,7 +131,7 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   digitalWrite(lightPin, HIGH);
   delay(200);
   lastStartTime = millis();
-  Serial.println(F("Attract mode Beendet"));
+  Serial.println(F("Attract Mode Beendet"));
 }
 
 // Funktion, um das Spiel zu starten

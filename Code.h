@@ -188,7 +188,7 @@ void endGame() {
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
 void controlOutputs() {
   for (int i = 0; i < 4; ++i) {
-    if (digitalRead(buttonPins[i]) == HIGH) {
+    if (digitalRead(buttonPins[i]) == LOW) {
       outputState[i] = true; // Schalter gedrückt, Output aktivieren
     } else {
       outputState[i] = false; // Schalter losgelassen, Output deaktivieren

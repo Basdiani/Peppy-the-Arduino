@@ -321,7 +321,7 @@ void pinset(int pina,int pinb,int pinc,int pind) {
 void startbutton(){
     // Überprüfen, ob das Spiel gestartet werden soll
   if (!programRunning) {
-
+wdt_reset();  /* Reset the watchdog */
     //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
   pinreset();
     

@@ -233,8 +233,6 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
         Serial.println("Unbekannter Befehl!");
         break;
     }
-  
-  wdt_reset();  /* Reset the watchdog */
 }
 
 // Überprüfen, ob der "Attract Mode" gestartet werden soll

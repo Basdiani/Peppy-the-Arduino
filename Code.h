@@ -105,11 +105,13 @@ MyAttractModeTimer=30000;
 
   myDFPlayer.play(attractTrack); // Zufällig ausgewählten Track abspielen
 
+  digitalWrite(partyLightPin, LOW);
+  digitalWrite(motorPin, LOW);
+
 while(millis()-MyTimer<MyAttractModeTimer) {
 
 
-  digitalWrite(partyLightPin, LOW);
-  digitalWrite(motorPin, LOW);
+  
   digitalWrite(outputPins[0], HIGH);
   digitalWrite(outputPins[1], LOW);
   digitalWrite(outputPins[2], HIGH);

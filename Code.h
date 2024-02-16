@@ -110,6 +110,8 @@ MyAttractModeTimer=30000;
 
 while(millis()-MyTimer<MyAttractModeTimer) {
 
+  
+// Peppy zappeln lassen
   for (int i = 0; i < 5; ++i) {
     pinset(setattractpins[i][0],setattractpins[i][1],setattractpins[i][2],setattractpins[i][3]);
     delay(750);

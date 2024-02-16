@@ -36,6 +36,7 @@ void printDetail(uint8_t type, int value);
 
 
 void setup() {
+  Serial.println(F("Peppy wird konfiguriert..."));
   #if (defined ESP32)
   FPSerial.begin(9600, SERIAL_8N1, /*rx =*/19, /*tx =*/18);
 #else

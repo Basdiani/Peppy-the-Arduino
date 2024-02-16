@@ -313,6 +313,7 @@ void pinset(int pina,int pinb,int pinc,int pind) {
   digitalWrite(outputPins[1], pinb);
   digitalWrite(outputPins[2], pinc);
   digitalWrite(outputPins[3], pind);
+  Serial.println(F("Peppy zappelt."));
   
 }
 

@@ -87,7 +87,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
   Serial.println(F("OutputPins auf Standard gesetzt."));
 
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
-  Serial.println(F("Watchdog aktiv bei 8 Sekudnen gesetzt."));
+  Serial.println(F("Watchdog aktiv bei 8 Sekunden gesetzt."));
   
   // Startbutton als Interrupt definieren
   Serial.println(F("Interrupt für Gameplay aktiviert."));

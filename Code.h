@@ -204,8 +204,6 @@ void controlOutputs() {
 
 void loop() {
   unsigned long currentTime = millis();
-
-
   
   // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
   if (programRunning) {

@@ -36,6 +36,7 @@ void printDetail(uint8_t type, int value);
 
 
 void setup() {
+  
   Serial.println(F("Peppy wird konfiguriert..."));
   #if (defined ESP32)
   FPSerial.begin(9600, SERIAL_8N1, /*rx =*/19, /*tx =*/18);
@@ -94,7 +95,6 @@ Serial.println(F("Mit MP3 Player verbinden."));
 // Funktion für den "Attract Mode"
 void attractMode() {
 
-
   // setze Dauer des Attract Mode
 MyTimer=millis();
 MyAttractModeTimer=30000;
@@ -138,6 +138,7 @@ while(millis()-MyTimer<MyAttractModeTimer) {
 
 // Funktion, um das Spiel zu starten
 void startGame() {
+  
   programRunning = true;
   attractModeRunning = false;
   partyLightActive = true;
@@ -175,6 +176,7 @@ void endGame() {
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
 bool controlOutputs() {
+  
   for (int i = 0; i < 4; ++i) {
     if (digitalRead(buttonPins[i]) == LOW) {
       outputState[i] = false; // Schalter gedrückt, Output aktivieren

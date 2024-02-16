@@ -170,8 +170,8 @@ void endGame() {
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
   
-  lastStartTime = millis();
   partyLightActive = false;
+  lastStartTime = millis();
   Serial.println(F("Game Beendet."));
   wdt_reset();  /* Reset the watchdog */
 }

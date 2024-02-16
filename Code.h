@@ -136,9 +136,9 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
 
 // Funktion, um das Spiel zu starten
 void startGame() {
-  
-  programRunning = true;
+
   attractModeRunning = false;
+  programRunning = true;
   partyLightActive = true;
   digitalWrite(ledPin, HIGH);
   digitalWrite(partyLightPin, LOW);

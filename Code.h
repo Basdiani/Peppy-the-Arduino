@@ -167,7 +167,7 @@ void endGame() {
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern
-void controlOutputs() {
+bool controlOutputs() {
   for (int i = 0; i < 4; ++i) {
     if (digitalRead(buttonPins[i]) == LOW) {
       outputState[i] = false; // Schalter gedrückt, Output aktivieren
@@ -178,7 +178,7 @@ void controlOutputs() {
     delay(200);
   }
   wdt_reset();  /* Reset the watchdog */
-  return true;
+  return 1;
 }
 
 void loop() {
@@ -188,7 +188,7 @@ void loop() {
   if (programRunning) { 
 
     //  Controlls aufrufen und Überprüfen, ob das Spielende erreicht wurde
-    if (controlOutputs() && (currentTime - startTime >= 60000) {
+    if (controlOutputs() && (currentTime - startTime >= 60000)) {
       endGame();
     }
   }

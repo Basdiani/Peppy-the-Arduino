@@ -77,6 +77,7 @@ void setup() {
   lastStartTime = millis(); // Startzeit setzen
 
   digitalWrite(ledPin, LOW);
+  delay(200);
   
   pinreset(); // Standardwerte der Outputs setzen, player stoppen
   

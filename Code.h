@@ -195,6 +195,7 @@ void controlOutputs() {
     }
     digitalWrite(outputPins[i], outputState[i]);
   }
+  delay(200);
 }
 
 void loop() {

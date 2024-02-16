@@ -96,7 +96,6 @@ Serial.println(F("Mit MP3 Player verbinden."));
 void attractMode() {
 
   // setze Dauer des Attract Mode
-MyTimer=millis();
 MyAttractModeTimer=30000;
   
   attractModeRunning = true;
@@ -111,7 +110,8 @@ MyAttractModeTimer=30000;
   digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
   delay(200);
-
+  
+MyTimer=millis();
 while(millis()-MyTimer<MyAttractModeTimer) {
 
   

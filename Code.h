@@ -164,7 +164,6 @@ void endGame() {
 
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-  return;
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern

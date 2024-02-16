@@ -335,6 +335,7 @@ void startbutton(){
     Serial.println(F("Interrupt für Gameplay deaktiviert."));
     
     wdt_reset();  /* Reset the watchdog */
+    Serial.println(F("Watchdog reset."));
     
     //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
      pinreset();

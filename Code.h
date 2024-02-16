@@ -164,10 +164,10 @@ void endGame() {
   Serial.println(F("Game Beendet."));
   wdt_reset();  /* Reset the watchdog */
 
-    // Startbutton als Interrupt wieder aktivieren
-  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
   Serial.println(F("Interrupt nach Gameende reaktiviert."));
   lastStartTime = millis();
+    // Startbutton als Interrupt wieder aktivieren
+  attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern

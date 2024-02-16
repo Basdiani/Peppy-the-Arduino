@@ -146,16 +146,16 @@ while(millis()-MyTimer<MyAttractModeTimer) {
 // Funktion, um das Spiel zu starten
 void startGame() {
   programRunning = true;
-  digitalWrite(ledPin, HIGH);
-  startTime = millis();
   attractModeRunning = false;
   partyLightActive = true;
+  digitalWrite(ledPin, HIGH);
   digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
   digitalWrite(lightPin, LOW);
-
+  delay(200);
   myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
-   Serial.println(F("Game Gestartet"));
+  startTime = millis();
+  Serial.println(F("Game Gestartet"));
 }
 
 // Funktion, um das Spiel zu beenden

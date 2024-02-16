@@ -168,6 +168,8 @@ void endGame() {
 
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
+
+  wdt_reset();  /* Reset the watchdog */
 }
 
 // Funktion zur Steuerung der Ausgänge basierend auf den Schaltern

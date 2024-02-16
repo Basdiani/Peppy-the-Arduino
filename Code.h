@@ -77,7 +77,7 @@ void setup() {
   lastStartTime = millis(); // Startzeit setzen
 
   digitalWrite(ledPin, LOW);
-  pinreset();
+  pinreset(); // StaNdardwerte der Outputs setzen, player stoppen
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 

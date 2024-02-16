@@ -185,6 +185,7 @@ bool controlOutputs() {
   }
  delay(200);
   wdt_reset();  /* Reset the watchdog */
+  Serial.println(F("Watchdog reset."));
   return 1;
 }
 
@@ -238,6 +239,7 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
     attractMode();
   }
 wdt_reset();  /* Reset the watchdog */
+  Serial.println(F("Watchdog reset."));
 }
 
 void printDetail(uint8_t type, int value){

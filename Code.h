@@ -112,7 +112,7 @@ MyAttractModeTimer=30000;
   delay(200);
   
 MyTimer=millis();
-while(millis()-MyTimer<MyAttractModeTimer) {
+while(millis()-MyTimer<=MyAttractModeTimer) {
 
   
 // Peppy zappeln lassen

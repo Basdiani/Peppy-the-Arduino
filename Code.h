@@ -105,6 +105,7 @@ MyAttractModeTimer=30000;
 
   digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
+  delay(200);
 
 while(millis()-MyTimer<MyAttractModeTimer) {
 

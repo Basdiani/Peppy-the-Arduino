@@ -175,8 +175,8 @@ bool controlOutputs() {
       outputState[i] = true; // Schalter losgelassen, Output deaktivieren
     }
     digitalWrite(outputPins[i], outputState[i]);
-    delay(200);
   }
+ delay(200);
   wdt_reset();  /* Reset the watchdog */
   return 1;
 }

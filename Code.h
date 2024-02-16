@@ -1,6 +1,7 @@
 #include "Arduino.h"
 #include <DFRobotDFPlayerMini.h>
 #include <stdlib.h>
+#include<avr/wdt.h> /* Header for watchdog timers in AVR */
 
 // Pin-Definitionen
 const int startButtonPin = 21; // PIN 21 für Interrupt bei Mega2560
@@ -87,6 +88,7 @@ void setup() {
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
 
+  wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
 }
 
 // Funktion für den "Attract Mode"
@@ -129,6 +131,8 @@ while(millis()-MyTimer<MyAttractModeTimer) {
   pinset(HIGH,HIGH,HIGH,HIGH);
 
   delay(750);
+  
+  wdt_reset();  /* Reset the watchdog */
   }
 
   attractModeRunning = false;
@@ -182,6 +186,7 @@ void controlOutputs() {
     digitalWrite(outputPins[i], outputState[i]);
   }
   delay(200);
+  wdt_reset();  /* Reset the watchdog */
 }
 
 void loop() {
@@ -308,6 +313,7 @@ void pinreset() {
   digitalWrite(outputPins[3], HIGH);
     myDFPlayer.stop();
     delay(200);
+  wdt_reset();  /* Reset the watchdog */
 }
 
 void pinset(int pina,int pinb,int pinc,int pind) {

@@ -81,6 +81,7 @@ void setup() {
   delay(200);
   
   pinreset(); // Standardwerte der Outputs setzen, player stoppen
+  Serial.println(F("OutputPins auf Standard gesetzt."));
 
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   

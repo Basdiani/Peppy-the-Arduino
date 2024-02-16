@@ -313,6 +313,7 @@ void printDetail(uint8_t type, int value){
     default:
       break;
   }
+  return;
 }
 
 void startbutton(){

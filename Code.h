@@ -328,6 +328,8 @@ void startbutton(){
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
+    delay(200);
+    
     // Interrupt deaktivieren
     detachInterrupt(digitalPinToInterrupt(startButtonPin));
     startGame();

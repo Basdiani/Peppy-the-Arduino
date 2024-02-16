@@ -11,6 +11,7 @@ const int partyLightPin = 0;
 const int motorPin = 24;
 const int lightPin = 1;
 const int ledPin = 13;
+const int setattractpins[5][4] = {{HIGH,LOW,HIGH,HIGH},{LOW,HIGH,HIGH,HIGH},{HIGH,LOW,LOW,HIGH},{LOW,HIGH,HIGH,LOW},{HIGH,HIGH,HIGH,HIGH}};
 
 unsigned long startTime = 0;
 unsigned long lastStartTime = 0;

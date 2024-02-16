@@ -193,6 +193,9 @@ bool controlOutputs() {
 }
 
 void loop() {
+
+  wdt_reset();  /* Reset the watchdog */
+  Serial.println(F("Watchdog reset."));
   
   // Wenn das Spiel läuft, steuere die Ausgänge und überprüfe die Spielzeit
   if (programRunning) { 

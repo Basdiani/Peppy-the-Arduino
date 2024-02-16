@@ -84,7 +84,6 @@ Serial.println(F("Mit MP3 Player verbinden."));
   delay(200);
   
   pinreset(); // Standardwerte der Outputs setzen, player stoppen
-  Serial.println(F("OutputPins auf Standard gesetzt."));
 
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   Serial.println(F("Watchdog aktiv bei 8 Sekunden gesetzt."));

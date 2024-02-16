@@ -87,7 +87,7 @@ void setup() {
   
   // Startbutton als Interrupt definieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);
-  Serial.println(F("Interrupt aktiv."));
+  Serial.println(F("Interrupt für Gameplay aktiviert."));
 }
 
 // Funktion für den "Attract Mode"

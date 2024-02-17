@@ -169,7 +169,7 @@ void startGame() {
 void endGame() {
 
   bool programRunning = false;
-  bool partyLightActive = false;
+  // bool partyLightActive = false;
   
   digitalWrite(ledPin, LOW);
   delay(200);
@@ -326,6 +326,7 @@ void printDetail(uint8_t type, int value){
 
 void pinreset() {
   digitalWrite(partyLightPin, HIGH);
+  bool partyLightActive = false;
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
   digitalWrite(outputPins[0], HIGH);

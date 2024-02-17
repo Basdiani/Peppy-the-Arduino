@@ -60,6 +60,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
   }
   Serial.println(F("DFPlayer Mini online."));
 
+  myDFPlayer.setTimeOut(500); //Timeout serial 500ms
   myDFPlayer.volume(30);  //Set volume value. From 0 to 30
   
   if (myDFPlayer.available()) {

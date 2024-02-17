@@ -78,7 +78,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
   pinMode(lightPin, OUTPUT);
 
   
-  lastStartTime = millis(); // Startzeit setzen
+  long lastStartTime = millis(); // Startzeit setzen
 
   pinreset(); // Standardwerte der Outputs setzen, player stoppen
 

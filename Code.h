@@ -152,7 +152,7 @@ void startGame() {
     wdt_reset();  /* Reset the watchdog */
     Serial.println(F("Watchdog reset."));
   
-  bool attractModeRunning = false;
+  // bool attractModeRunning = false;
   bool programRunning = true;
   bool partyLightActive = true;
   digitalWrite(ledPin, HIGH);

@@ -47,7 +47,7 @@ void setup() {
   Serial.begin(115200);
 Serial.println(F("Mit MP3 Player verbinden."));
   Serial.println();
-  Serial.println(F("DFRobot DFPlayer Mini"));
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
   Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
 
   if (!myDFPlayer.begin(FPSerial, /*isACK = */true, /*doReset = */true)) {  //Use serial to communicate with mp3.

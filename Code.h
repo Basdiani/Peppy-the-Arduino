@@ -141,7 +141,7 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
   delay(50);
-  lastStartTime = millis();
+  long lastStartTime = millis();
   Serial.println(F("Attract Mode Beendet"));
 }
 
@@ -161,7 +161,7 @@ void startGame() {
   delay(200);
   myDFPlayer.play(2); // Track 1 abspielen, wenn das Spiel gestartet wird (falls 1 der Track für das Spiel ist)
   Serial.println(F("Game Gestartet"));
-  startTime = millis();
+  long startTime = millis();
 }
 
 // Funktion, um das Spiel zu beenden
@@ -183,7 +183,7 @@ void endGame() {
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));
   
-  lastStartTime = millis();
+  long lastStartTime = millis();
   Serial.println(F("Interrupt nach Gameende reaktiviert."));
     // Startbutton als Interrupt wieder aktivieren
   attachInterrupt(digitalPinToInterrupt(startButtonPin), startbutton, FALLING);

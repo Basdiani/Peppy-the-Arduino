@@ -116,7 +116,7 @@ MyAttractModeTimer=30000;
   digitalWrite(motorPin, LOW);
   delay(200);
   
-MyTimer=millis();
+long MyTimer=millis();
 while(millis()-MyTimer<=MyAttractModeTimer) {
   
 // Peppy 4 x zappeln lassen

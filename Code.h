@@ -103,9 +103,9 @@ void attractMode() {
   // setze Dauer des Attract Mode
 MyAttractModeTimer=30000;
   
-  attractModeRunning = true;
+  bool attractModeRunning = true;
   Serial.println(F("Attract Mode gestartet"));
-  partyLightActive = true;
+  bool  partyLightActive = true;
 
   // Zufällig Track 2 oder Track 3 auswählen
   int attractTrack = random(3, 5); // Zufallszahl zwischen 3 (inklusive) und 5 (exklusive) (Track 3 und Track 4)
@@ -134,8 +134,8 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   Serial.println(F("Watchdog reset."));
   }
 
-  attractModeRunning = false;
-  partyLightActive = false;
+  bool attractModeRunning = false;
+  bool partyLightActive = false;
   myDFPlayer.stop();
   digitalWrite(partyLightPin, HIGH);
   digitalWrite(motorPin, HIGH);
@@ -151,9 +151,9 @@ void startGame() {
     wdt_reset();  /* Reset the watchdog */
     Serial.println(F("Watchdog reset."));
   
-  attractModeRunning = false;
-  programRunning = true;
-  partyLightActive = true;
+  bool attractModeRunning = false;
+  bool programRunning = true;
+  bool partyLightActive = true;
   digitalWrite(ledPin, HIGH);
   digitalWrite(partyLightPin, LOW);
   digitalWrite(motorPin, LOW);
@@ -167,8 +167,8 @@ void startGame() {
 // Funktion, um das Spiel zu beenden
 void endGame() {
 
-  programRunning = false;
-  partyLightActive = false;
+  bool programRunning = false;
+  bool partyLightActive = false;
   
   digitalWrite(ledPin, LOW);
   delay(200);
@@ -194,9 +194,9 @@ bool controlOutputs() {
   
   for (int i = 0; i < 4; ++i) {
     if (digitalRead(buttonPins[i]) == LOW) {
-      outputState[i] = false; // Schalter gedrückt, Output aktivieren
+      bool outputState[i] = false; // Schalter gedrückt, Output aktivieren
     } else {
-      outputState[i] = true; // Schalter losgelassen, Output deaktivieren
+      bool outputState[i] = true; // Schalter losgelassen, Output deaktivieren
     }
     digitalWrite(outputPins[i], outputState[i]);
   }

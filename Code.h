@@ -104,7 +104,7 @@ void attractMode() {
   // setze Dauer des Attract Mode
 MyAttractModeTimer=30000;
   
-  bool attractModeRunning = true;
+  //bool attractModeRunning = true; 
   Serial.println(F("Attract Mode gestartet"));
   bool  partyLightActive = true;
 
@@ -135,7 +135,7 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   Serial.println(F("Watchdog reset."));
   }
 
-  bool attractModeRunning = false;
+  // bool attractModeRunning = false;
   bool partyLightActive = false;
   myDFPlayer.stop();
   digitalWrite(partyLightPin, HIGH);
@@ -256,7 +256,7 @@ if (Serial.available() > 0) { // Prüfen, ob Daten in der seriellen Konsole verf
 }
 
 // Überprüfen, ob der "Attract Mode" gestartet werden soll
-  if ((millis() - lastStartTime) >= 600000 && !attractModeRunning) {
+  if ((millis() - lastStartTime) >= 600000 && !programRunning) {
     attractMode();
   }
 wdt_reset();  /* Reset the watchdog */

@@ -87,7 +87,7 @@ Serial.println(F("Mit MP3 Player verbinden."));
 
 
   // RandomSeed setzen, unterschiedliche Zufallszahlen je Boot
-  randomSeed(millis();
+  randomSeed(millis());
 
   wdt_enable(WDTO_8S);  /* Enable the watchdog with a timeout of 8 seconds */
   Serial.println(F("Watchdog aktiv bei 8 Sekunden gesetzt."));

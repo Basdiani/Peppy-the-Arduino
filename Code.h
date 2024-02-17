@@ -117,11 +117,16 @@ MyAttractModeTimer=30000;
 MyTimer=millis();
 while(millis()-MyTimer<=MyAttractModeTimer) {
   
-// Peppy zappeln lassen
-  for (int i = 0; i < 5; ++i) {
-    pinset(setattractpins[i][0],setattractpins[i][1],setattractpins[i][2],setattractpins[i][3]);
+// Peppy 4 x zappeln lassen
+  for (int i = 0; i < 4; ++i) {
+     // Zufällig Bewegung auswählen
+    int attractMove = random(0, 3);
+    pinset(setattractpins[attractMove][0],setattractpins[attractMove][1],setattractpins[attractMove][2],setattractpins[attractMove][3]);
     delay(750);
   }
+  // 1 x Null-Stellung
+  pinset(setattractpins[4][0],setattractpins[4][1],setattractpins[4][2],setattractpins[4][3]);
+  delay(750);
   
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));
@@ -198,7 +203,7 @@ bool controlOutputs() {
     }
     digitalWrite(outputPins[i], outputState[i]);
   }
- delay(200);
+ delay(50);
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));
   return 1;
@@ -329,7 +334,6 @@ void pinreset() {
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
-
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));
   //myDFPlayer.stop();
@@ -348,7 +352,7 @@ void pinset(int pina,int pinb,int pinc,int pind) {
   digitalWrite(outputPins[2], pinc);
   digitalWrite(outputPins[3], pind);
   Serial.println(F("Peppy zappelt."));
-  delay(250);  
+  delay(150);  
 }
 
 void startbutton(){

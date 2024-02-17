@@ -331,9 +331,6 @@ void pinreset() {
   digitalWrite(outputPins[1], HIGH);
   digitalWrite(outputPins[2], HIGH);
   digitalWrite(outputPins[3], HIGH);
-  wdt_reset();  /* Reset the watchdog */
-  Serial.println(F("Watchdog reset."));
-  //myDFPlayer.stop();
   
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));

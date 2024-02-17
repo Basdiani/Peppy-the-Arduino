@@ -166,6 +166,9 @@ void startGame() {
 
 // Funktion, um das Spiel zu beenden
 void endGame() {
+
+  programRunning = false;
+  partyLightActive = false;
   
   digitalWrite(ledPin, LOW);
   delay(200);
@@ -174,10 +177,7 @@ void endGame() {
   pinreset();
 
    myDFPlayer.stop();
-
   
-  partyLightActive = false;
-  programRunning = false;
   Serial.println(F("Game Beendet."));
   
   wdt_reset();  /* Reset the watchdog */

@@ -4,7 +4,7 @@
 #include <avr/wdt.h> /* Header for watchdog timers in AVR */
 
 // Pin-Definitionen
-const int startButtonPin = 2; // PIN 21 für Interrupt bei Mega2560
+const int startButtonPin = 21; // PIN 21 für Interrupt bei Mega2560
 const int buttonPins[] = {37, 39, 41, 43};
 const int outputPins[] = {25, 27, 29, 31};
 const int partyLightPin = 0;

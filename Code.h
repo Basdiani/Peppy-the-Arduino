@@ -19,7 +19,7 @@ unsigned long MyTimer=0;
 unsigned long MyAttractModeTimer=0;
 
 bool programRunning = false;
-bool attractModeRunning = false;
+// bool attractModeRunning = false;
 bool partyLightActive = false;
 
 bool outputState[] = {true, true, true, true}; // Zustand der Ausgänge, true = high - relais low active

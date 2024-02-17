@@ -136,12 +136,15 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
   }
 
   // bool attractModeRunning = false;
-  bool partyLightActive = false;
+  // bool partyLightActive = false;
   myDFPlayer.stop();
+  pinreset();
+  /*
   digitalWrite(partyLightPin, HIGH);
   digitalWrite(motorPin, HIGH);
   digitalWrite(lightPin, HIGH);
   delay(50);
+  */
   long lastStartTime = millis();
   Serial.println(F("Attract Mode Beendet"));
 }

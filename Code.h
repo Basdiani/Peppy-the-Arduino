@@ -148,12 +148,7 @@ while(millis()-MyTimer<=MyAttractModeTimer) {
 
 // Funktion, um das Spiel zu starten
 void startGame() {
-
-        // Interrupt deaktivieren
-    detachInterrupt(digitalPinToInterrupt(startButtonPin));
-    Serial.println(F("Interrupt für Gameplay deaktiviert."));
-
-
+  
     wdt_reset();  /* Reset the watchdog */
     Serial.println(F("Watchdog reset."));
   
@@ -359,10 +354,14 @@ void pinset(int pina,int pinb,int pinc,int pind) {
 }
 
 void startbutton(){
+
     // Überprüfen, ob das Spiel gestartet werden soll
   if (!programRunning) {
-   
-           //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
+    // Interrupt deaktivieren
+    detachInterrupt(digitalPinToInterrupt(startButtonPin));
+    Serial.println(F("Interrupt für Gameplay deaktiviert."));
+
+     //Sicherstellen, dass alle Pins auf standard zurückgesetzt sind (Attract Mode)
      pinreset();
 
     startGame();

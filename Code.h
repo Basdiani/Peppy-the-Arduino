@@ -205,6 +205,7 @@ bool controlOutputs() {
     digitalWrite(outputPins[i], outputState[i]);
   }
  delay(50);
+  Serial.println(F("Peppy im Spiel zappeln lassen."));
   wdt_reset();  /* Reset the watchdog */
   Serial.println(F("Watchdog reset."));
   return 1;
